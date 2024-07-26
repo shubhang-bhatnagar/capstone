@@ -1,0 +1,46 @@
+<div>
+    <h4>Vehicles Management</h4>
+  
+    <form #vehicleForm="ngForm" (ngSubmit)="addVehicle(vehicleForm)">
+      <label for="customerName">Customer Name:</label>
+      <input type="text" id="customerName" name="customerName" ngModel required>
+      
+      <label for="services">Services:</label>
+      <input type="text" id="services" name="services" ngModel required>
+      
+      <label for="expectedDate">Expected Date:</label>
+      <input type="text" id="expectedDate" name="expectedDate" ngModel required>
+      
+      <button type="submit">New Vehicle</button>
+    </form>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Model ID</th>
+          <th>Expected Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let vehicle of vehiclesMap.values()">
+          <td>{{ vehicle.modelId }}</td>
+          <td>{{ vehicle.expectedDate }}</td>
+          <td>
+            <button (click)="showDetails(vehicle.modelId)">Details</button>
+            <button (click)="deleteVehicle(vehicle.modelId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="selectedVehicle" class="vehicle-details-card">
+      <h3>Vehicle Details</h3>
+      <p><strong>Model ID:</strong> {{selectedVehicle.modelId}}</p>
+      <p><strong>Customer Name:</strong> {{selectedVehicle.customerName}}</p>
+      <p><strong>Services:</strong> {{selectedVehicle.services}}</p>
+      <p><strong>Expected Date:</strong> {{selectedVehicle.expectedDate}}</p>
+      <button (click)="clearDetails()">Close</button>
+    </div>
+  </div>
+  

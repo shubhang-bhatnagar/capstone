@@ -1,0 +1,22 @@
+<!-- Add a condition to apply a class when the button is clicked -->
+<h1>Welcome!</h1>
+<h3>Please Login Yourself</h3>
+
+
+<div *ngIf="msg!=''">
+    <p>{{msg}}</p>
+</div>
+
+<form [ngClass]="{ 'bounce': animateForm }" #userForm="ngForm" (ngSubmit)="onRegistrationFormSubmit(userForm)">
+    <input placeholder="username" name="username" type="text" ngModel required/>
+    <br/><br/>
+    <input placeholder="password" name="password" type="text" ngModel required/>
+    <br/><br/>
+    <input placeholder="email" name="email" type="email" ngModel required/>    
+    <br/><br/>
+    <button *ngIf="userForm.valid" (click)="triggerBounce()">Register/Signup</button>
+</form>
+<div>
+    <p>Didnot have account?</p>
+    <button routerLink="/signup" > Create Account</button>
+</div>

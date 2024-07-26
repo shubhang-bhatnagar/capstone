@@ -1,0 +1,46 @@
+<div>
+    <h4>Customer Management</h4>
+  
+    <form #customerForm="ngForm" (ngSubmit)="addCustomer(customerForm)">
+      <label for="customerName">Customer Name:</label>
+      <input type="text" id="customerName" name="customerName" ngModel required>
+      
+      <label for="surname">Surname:</label>
+      <input type="text" id="surnames" name="surnames" ngModel required>
+      
+      <label for="number">Number:</label>
+      <input type="text" id="number" name="number" ngModel required>
+      
+      <button type="submit">New Customer</button>
+    </form>
+  
+    <table>
+      <thead>
+        <tr>
+          <th> ID</th>
+          <th>Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customersMap.values()">
+          <td>{{ customer.id }}</td>
+          <td>{{ customer.name }}</td>
+          <td>
+            <button (click)="showDetails(customer.id)">Details</button>
+            <button (click)="deletecustomer(customer.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="selectedCustomer" class="customer-details-card">
+      <h3>Customer Details</h3>
+      <p><strong>Customer ID:</strong> {{selectedCustomer.id}}</p>
+      <p><strong>Customer Name:</strong> {{selectedCustomer.name}}</p>
+      <p><strong>Customer Surname:</strong> {{selectedCustomer.surname}}</p>
+      <p><strong>Customer Number:</strong> {{selectedCustomer.number}}</p>
+      <button (click)="clearDetails()">Close</button>
+    </div>
+  </div>
+  

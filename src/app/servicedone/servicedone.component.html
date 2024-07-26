@@ -1,0 +1,11 @@
+<div>
+   <h2>services</h2>
+    <div *ngIf="selectedservice" class="service-details-card">
+      <h3>Vehicle Details</h3>
+      <p><strong>Service Record ID:</strong> {{selectedservice.serviceRecordID}}</p>
+      <p><strong>Vehicle ID</strong> {{selectedservice.vehcileID}}</p>
+      <p><strong>Representative ID</strong> {{selectedservice.ServiceRepresentativeID}}</p>
+      <p><strong>Service Date:</strong> {{selectedservice.serviceDate}}</p>
+      <p><strong>Status</strong> {{selectedservice.status}}</p>
+    </div>
+  </div>
